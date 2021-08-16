@@ -1,4 +1,8 @@
 class Stock < ApplicationRecord
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+
+  validates :name, :ticker, presence: true
 
   # before_action :iex_client_sandbox, only: [:new_lookup]
   def iex_client
