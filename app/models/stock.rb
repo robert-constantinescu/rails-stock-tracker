@@ -23,7 +23,8 @@ class Stock < ApplicationRecord
       secret_token: Rails.application.credentials.iex_client[:secret_token_sandbox],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
-    client.quote(ticker_symbol).latest_price
+    client.quote(ticker_symbol)
+    new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
   end
   # private_class_method :iex_client
 
