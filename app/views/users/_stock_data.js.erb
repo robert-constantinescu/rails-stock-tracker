@@ -1,0 +1,6 @@
+//The below query will grab the <div> block with the id="stock_data_div_block" from the DOM.
+//In our case the specified id is in the _stock_data.html.erb
+// you need to escape the JavaScript, not really sure why(something related with embedded ruby).
+//to escape java, we have escape_javascript() method or we can simply use the 'j' alias: '<%#= j render 'users/stock_data' %>'
+// if you don't specify that is a .html file it will enter an infinity loop, because the current .js file has the same name
+document.querySelector('#stock_data_div_block').innerHTML = '<%= escape_javascript(render 'users/stock_data.html') %>'
