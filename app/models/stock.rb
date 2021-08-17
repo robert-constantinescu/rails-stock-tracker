@@ -35,4 +35,9 @@ class Stock < ApplicationRecord
   end
   # private_class_method :iex_client
 
+  Stock.where(ticker: 'GOOG').first
+
+  def self.get_stock_from_db(ticker_symbol)
+    Stock.where(ticker: ticker_symbol).first
+  end
 end
